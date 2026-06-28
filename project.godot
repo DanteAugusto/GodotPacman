@@ -19,6 +19,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://Assets/Sprites/icon.png"
 
+[autoload]
+
+GerenciadorCsv="*res://Autoloads/GerenciadorCSV.cs"
+
 [display]
 
 window/size/viewport_width=672
