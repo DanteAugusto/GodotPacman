@@ -1,0 +1,165 @@
+[gd_scene load_steps=5 format=3 uid="uid://dd34sbg4ct7h4"]
+
+[ext_resource type="FontFile" uid="uid://can0obkfyaxv0" path="res://Assets/Fonts/ARCADE_N.TTF" id="1_3wawy"]
+[ext_resource type="Script" path="res://Scripts/Relatorios.cs" id="1_e4urx"]
+[ext_resource type="PackedScene" uid="uid://dgggt5hewbu1r" path="res://Scenes/GraficoLinha.tscn" id="2_vpu8r"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_u5vix"]
+
+[node name="Relatorios" type="Control" node_paths=PackedStringArray("_graficoAdmFlexao", "_graficoAdmExtensao", "_graficoAdmDesvioUlnar", "_graficoAdmDesvioRadial", "_graficoVelocidadeFlexao", "_graficoVelocidadeExtensao", "_graficoVelocidadeDesvioUlnar", "_graficoVelocidadeDesvioRadial", "_graficoScore", "_graficoTempo", "_graficosFlexao", "_graficosExtensao", "_graficosDesvioUlnar", "_graficosDesvioRadial", "_graficosScoreTempo", "_btnFlexao", "_btnExtensao", "_btnDesvioUlnar", "_btnDesvioRadial", "_btnScoreTempo")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e4urx")
+_graficoAdmFlexao = NodePath("VBoxContainer/GraficosFlexao/ADMFlexao")
+_graficoAdmExtensao = NodePath("VBoxContainer/GraficosExtensao/ADMExtensao")
+_graficoAdmDesvioUlnar = NodePath("VBoxContainer/GraficosDesvioUlnar/ADMDesvioUlnar")
+_graficoAdmDesvioRadial = NodePath("VBoxContainer/GraficosDesvioRadial/ADMDesvioRadial")
+_graficoVelocidadeFlexao = NodePath("VBoxContainer/GraficosFlexao/VelocidadeFlexao")
+_graficoVelocidadeExtensao = NodePath("VBoxContainer/GraficosExtensao/VelocidadeExtensao")
+_graficoVelocidadeDesvioUlnar = NodePath("VBoxContainer/GraficosDesvioUlnar/VelocidadeDesvioUlnar")
+_graficoVelocidadeDesvioRadial = NodePath("VBoxContainer/GraficosDesvioRadial/VelocidadeDesvioRadial")
+_graficoScore = NodePath("VBoxContainer/GraficosScoreTempo/Score")
+_graficoTempo = NodePath("VBoxContainer/GraficosScoreTempo/Tempo")
+_graficosFlexao = NodePath("VBoxContainer/GraficosFlexao")
+_graficosExtensao = NodePath("VBoxContainer/GraficosExtensao")
+_graficosDesvioUlnar = NodePath("VBoxContainer/GraficosDesvioUlnar")
+_graficosDesvioRadial = NodePath("VBoxContainer/GraficosDesvioRadial")
+_graficosScoreTempo = NodePath("VBoxContainer/GraficosScoreTempo")
+_btnFlexao = NodePath("VBoxContainer/HBoxContainer/ButtonFlexao")
+_btnExtensao = NodePath("VBoxContainer/HBoxContainer/ButtonExtensao")
+_btnDesvioUlnar = NodePath("VBoxContainer/HBoxContainer/ButtonDesvioUlnar")
+_btnDesvioRadial = NodePath("VBoxContainer/HBoxContainer/ButtonDesvioRadial")
+_btnScoreTempo = NodePath("VBoxContainer/HBoxContainer/ButtonScoreTempo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.0470588, 0.0470588, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Control2" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_3wawy")
+text = "Monitoramento de ReabilitaCAo"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ButtonFlexao" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_u5vix")
+text = "Flexao"
+
+[node name="ButtonExtensao" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_u5vix")
+text = "Extensao"
+
+[node name="ButtonDesvioUlnar" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_u5vix")
+text = "Desvio Ulnar"
+
+[node name="ButtonDesvioRadial" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_u5vix")
+text = "Desvio Radial"
+
+[node name="ButtonScoreTempo" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_u5vix")
+text = "Score / Tempo"
+
+[node name="Control3" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="GraficosFlexao" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ADMFlexao" parent="VBoxContainer/GraficosFlexao" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução da Amplitude Máxima - Flexão"
+
+[node name="VelocidadeFlexao" parent="VBoxContainer/GraficosFlexao" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução da Velocidade Média - Flexão"
+
+[node name="GraficosExtensao" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ADMExtensao" parent="VBoxContainer/GraficosExtensao" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução da Amplitude Máxima - Extensão"
+
+[node name="VelocidadeExtensao" parent="VBoxContainer/GraficosExtensao" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução da Velocidade Média - Extensão"
+
+[node name="GraficosDesvioUlnar" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ADMDesvioUlnar" parent="VBoxContainer/GraficosDesvioUlnar" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução da Amplitude Máxima - Desvio Ulnar"
+
+[node name="VelocidadeDesvioUlnar" parent="VBoxContainer/GraficosDesvioUlnar" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução da Velocidade Média - Desvio Ulnarr"
+
+[node name="GraficosDesvioRadial" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ADMDesvioRadial" parent="VBoxContainer/GraficosDesvioRadial" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução da Amplitude Máxima - Desvio Radial"
+
+[node name="VelocidadeDesvioRadial" parent="VBoxContainer/GraficosDesvioRadial" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução da Velocidade Média - Desvio Radial"
+
+[node name="GraficosScoreTempo" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Score" parent="VBoxContainer/GraficosScoreTempo" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução do Score"
+
+[node name="Tempo" parent="VBoxContainer/GraficosScoreTempo" instance=ExtResource("2_vpu8r")]
+layout_mode = 2
+Titulo = "Evolução do Tempo de Sessão"

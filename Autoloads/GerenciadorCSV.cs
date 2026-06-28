@@ -22,6 +22,23 @@ public partial class GerenciadorCSV : Node
 		}
 
 		InicializarArquivo("user://relatorio_pachand.csv");
+
+		// Para testes, você pode descomentar o bloco abaixo para gerar dados aleatórios no CSV
+
+		// SalvarLinha(new RegistroDados
+		// {
+		// 	NumeroPartida = 1,
+		// 	AdmFlexao = Random.Shared.NextSingle() * 100.0f,
+		// 	VelocidadeMediaFlexao = Random.Shared.NextSingle() * 3.0f,
+		// 	AdmExtensao = Random.Shared.NextSingle() * 100.0f,
+		// 	VelocidadeMediaExtensao = Random.Shared.NextSingle() * 3.0f,
+		// 	AdmDesvioRadial = Random.Shared.NextSingle() * 100.0f,
+		// 	VelocidadeMediaDesvioRadial = Random.Shared.NextSingle() * 3.0f,
+		// 	AdmDesvioUlnar = Random.Shared.NextSingle() * 100.0f,
+		// 	VelocidadeMediaDesvioUlnar = Random.Shared.NextSingle() * 3.0f,
+		// 	Score = Random.Shared.Next(0, 101),
+		// 	TempoSessao = Random.Shared.NextSingle() * 300.0f
+		// });
 	}
 	
 	private string _caminhoAbsoluto;
@@ -31,16 +48,16 @@ public partial class GerenciadorCSV : Node
 	public class RegistroDados
 	{
 		public int NumeroPartida { get; set; }
-        public float AdmFlexao { get; set; }
-        public float VelocidadeMediaFlexao { get; set; }
-        public float AdmExtensao { get; set; }
-        public float VelocidadeMediaExtensao { get; set; }
-        public float AdmDesvioRadial { get; set; }
-        public float VelocidadeMediaDesvioRadial { get; set; }
-        public float AdmDesvioUlnar { get; set; }
-        public float VelocidadeMediaDesvioUlnar { get; set; }
-        public int Score { get; set; }
-        public float TempoSessao { get; set; }
+		public float AdmFlexao { get; set; }
+		public float VelocidadeMediaFlexao { get; set; }
+		public float AdmExtensao { get; set; }
+		public float VelocidadeMediaExtensao { get; set; }
+		public float AdmDesvioRadial { get; set; }
+		public float VelocidadeMediaDesvioRadial { get; set; }
+		public float AdmDesvioUlnar { get; set; }
+		public float VelocidadeMediaDesvioUlnar { get; set; }
+		public int Score { get; set; }
+		public float TempoSessao { get; set; }
 	}
 
 	public void InicializarArquivo(string caminhoGodot)
@@ -57,34 +74,34 @@ public partial class GerenciadorCSV : Node
 
 		// Se o arquivo for novo (tamanho 0), grava o cabeçalho estruturado
 		if (new FileInfo(_caminhoAbsoluto).Length == 0)
-        {
-            _writer.WriteLine("numero_partida,adm_flexao,vel_media_flexao,adm_extensao,vel_media_extensao," +
-                              "adm_desvio_radial,vel_media_desvio_radial,adm_desvio_ulnar,vel_media_desvio_ulnar," +
-                              "score,tempo_sessao");
-            _writer.Flush();
-        }
+		{
+			_writer.WriteLine("numero_partida,adm_flexao,vel_media_flexao,adm_extensao,vel_media_extensao," +
+							  "adm_desvio_radial,vel_media_desvio_radial,adm_desvio_ulnar,vel_media_desvio_ulnar," +
+							  "score,tempo_sessao");
+			_writer.Flush();
+		}
 	}
 
 	public void SalvarLinha(RegistroDados dados)
-    {
-        if (_writer == null) return;
+	{
+		if (_writer == null) return;
 
-        // Monta a linha acessando as propriedades diretamente e garantindo o ponto decimal
-        string linha = $"{dados.NumeroPartida}," +
-                       $"{dados.AdmFlexao.ToString(CultureInfo.InvariantCulture)}," +
-                       $"{dados.VelocidadeMediaFlexao.ToString(CultureInfo.InvariantCulture)}," +
-                       $"{dados.AdmExtensao.ToString(CultureInfo.InvariantCulture)}," +
-                       $"{dados.VelocidadeMediaExtensao.ToString(CultureInfo.InvariantCulture)}," +
-                       $"{dados.AdmDesvioRadial.ToString(CultureInfo.InvariantCulture)}," +
-                       $"{dados.VelocidadeMediaDesvioRadial.ToString(CultureInfo.InvariantCulture)}," +
-                       $"{dados.AdmDesvioUlnar.ToString(CultureInfo.InvariantCulture)}," +
-                       $"{dados.VelocidadeMediaDesvioUlnar.ToString(CultureInfo.InvariantCulture)}," +
-                       $"{dados.Score}," +
-                       $"{dados.TempoSessao.ToString(CultureInfo.InvariantCulture)}";
+		// Monta a linha acessando as propriedades diretamente e garantindo o ponto decimal
+		string linha = $"{dados.NumeroPartida}," +
+					   $"{dados.AdmFlexao.ToString(CultureInfo.InvariantCulture)}," +
+					   $"{dados.VelocidadeMediaFlexao.ToString(CultureInfo.InvariantCulture)}," +
+					   $"{dados.AdmExtensao.ToString(CultureInfo.InvariantCulture)}," +
+					   $"{dados.VelocidadeMediaExtensao.ToString(CultureInfo.InvariantCulture)}," +
+					   $"{dados.AdmDesvioRadial.ToString(CultureInfo.InvariantCulture)}," +
+					   $"{dados.VelocidadeMediaDesvioRadial.ToString(CultureInfo.InvariantCulture)}," +
+					   $"{dados.AdmDesvioUlnar.ToString(CultureInfo.InvariantCulture)}," +
+					   $"{dados.VelocidadeMediaDesvioUlnar.ToString(CultureInfo.InvariantCulture)}," +
+					   $"{dados.Score}," +
+					   $"{dados.TempoSessao.ToString(CultureInfo.InvariantCulture)}";
 
-        _writer.WriteLine(linha);
+		_writer.WriteLine(linha);
 		_writer.Flush();
-    }
+	}
 
 	public List<RegistroDados> LerArquivo()
 	{
@@ -108,7 +125,7 @@ public partial class GerenciadorCSV : Node
 				if (colunas.Length >= 11)
 				{
 					try
-                    {
+					{
 						lista.Add(new RegistroDados
 						{
 							NumeroPartida = int.Parse(colunas[0]),
@@ -124,10 +141,10 @@ public partial class GerenciadorCSV : Node
 							TempoSessao = float.Parse(colunas[10], CultureInfo.InvariantCulture)
 						});
 					}
-                    catch (FormatException)
-                    {
-                        GD.PrintErr($"Erro de conversão de dados na linha: {linha}");
-                    }
+					catch (FormatException)
+					{
+						GD.PrintErr($"Erro de conversão de dados na linha: {linha}");
+					}
 				}
 			}
 		}
